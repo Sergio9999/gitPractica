@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ajax</title>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js">
+	</script>
+<script>
+	$(document).ready(function(){
+		$('#p_1').bind('click', function(){
+			$.get("content.php", {id:1}), function(data){
+				var element = $('#content');
+				if(element.length==0) 
+					$('<p id="content">' + data + "</p>").appendTo($('body'))
+				else $('#content').text(data);
+				$('#p_2').bind('click', function(){
+			$.post("content.php", {id:2}), function(data){
+				var element = $('#content');
+				if(element.length==0) 
+					$('<p id="content">' + data + "</p>").appendTo($('body'))
+				else $('#content').text(data)
+
+			}
+		})
+
+	})
+</script>
+<body>
+		<span id="p_1">Вкладка 1</span>
+		<span id="p_2">Вкладка 2</span>
+		
+	<p>Привет</p>
+	<p>Привет</p>
+</body>
+</html>
